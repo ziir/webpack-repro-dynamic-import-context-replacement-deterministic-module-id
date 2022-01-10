@@ -1,0 +1,13 @@
+{
+  "name": "webpack-repro-dynamic-import-context-replacement-deterministic-module-id",
+  "scripts": {
+    "start": "npm run build:all; npm run prettify:all; npm run compare",
+    "prettify:a": "npx prettier --write context-a/dist/main.js",
+    "prettify:b": "npx prettier --write folder-b/context-b/dist/main.js",
+    "prettify:all": "npm run prettify:a; npm run prettify:b",
+    "compare": "diff context-a/dist/main.js folder-b/context-b/dist/main.js > comparison.diff; cat comparison.diff",
+    "build:a": "cd context-a; yarn build",
+    "build:b": "cd folder-b/context-b; yarn build",
+    "build:all": "npm run build:a; npm run build:b"
+  }
+}
